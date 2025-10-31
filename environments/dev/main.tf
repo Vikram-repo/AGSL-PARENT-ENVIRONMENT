@@ -12,7 +12,7 @@ locals {
 
 # Create Resource Group
 module "rg" {
-  source  = "../../modules/resource-group"
+  source  = "git::https://github.com/Vikram-repo/AGSL-MODULES.git//resource-group?ref=stable"
   name    = "${var.project_name}-${var.environment}-rg"
   location = var.location
   tags    = local.common_tags
@@ -21,7 +21,7 @@ module "rg" {
 # Create App Service Plan
 module "asp" {
   depends_on = [ module.rg ]
-  source = "../../modules/app-service-plan"
+  source = "git::https://github.com/Vikram-repo/AGSL-MODULES.git//app-service-plan?ref=stable"
   asp_name            = "${var.project_name}-${var.environment}-aii"
   resource_group_name = module.rg.name
   location            = module.rg.location
@@ -33,7 +33,7 @@ module "asp" {
 # Create App Service
 module "app" {
   depends_on = [ module.rg ]
-  source = "../../modules/app-service"
+  source = "git::https://github.com/Vikram-repo/AGSL-MODULES.git//app-service?ref=stable"
   app_service_name     = "${var.project_name}-${var.environment}-aai"
   resource_group_name  = module.rg.name
   location             = module.rg.location
@@ -43,7 +43,7 @@ module "app" {
 
 #create storage account
 module "stg" {
-  source                   = "../../modules/storage-account"
+  source                   = "git::https://github.com/Vikram-repo/AGSL-MODULES.git//storage-account?ref=stable"
   stg_name                 = var.stg_name
   resource_group_name      = module.rg.name
   location                 = module.rg.location
