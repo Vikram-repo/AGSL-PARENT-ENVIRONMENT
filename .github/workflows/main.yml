@@ -40,9 +40,25 @@ jobs:
           client-id: ${{ env.CLIENT_ID }}
           tenant-id: ${{ secrets.AZURE_TENANT_ID }}
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+          
+      - name: Install TFLint # install lint on agent
+        run: |
+          curl -s https://raw.githubusercontent.com/terraform-linters/tflint/master/install_linux.sh | bash
+          tflint --version
 
+      - name: Run TFLint and save report
+        run: |
+         mkdir -p tflint-reports
+         tflint --format json > tflint-reports/tflint-report.json
+      - name: Upload TFlint report as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: tflint-report
+          path: tflint-reports/tflint-report.json
+           
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
+
 
       - name: Terraform Init with Azure Backend
         working-directory: environments/${{ inputs.environment }}
