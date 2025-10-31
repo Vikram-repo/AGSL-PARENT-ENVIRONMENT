@@ -25,7 +25,7 @@ variable "asp_os_type" { # app service plan os type
 }
 
 variable "stg_name" {
-  default = "cusgslstoragedevst"
+  default = "cusgslstorageprodst"
 }
 variable "account_tier" { # name for the account tier
   type    = string
