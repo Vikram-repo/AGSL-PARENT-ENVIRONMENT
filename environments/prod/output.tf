@@ -50,3 +50,12 @@ output "app_service_webapp_name" {
 output "app_service_tags" { 
     value = module.app.tags
     }
+
+    
+# output the name of the app service plan
+output "stg_name" {
+  value = module.stg.name
+}
+output "stg_tags" { # output the tags of the app service plan
+  value = module.stg.tags
+} 

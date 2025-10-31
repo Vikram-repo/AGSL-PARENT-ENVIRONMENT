@@ -1,4 +1,4 @@
-subscription_id = "d80310e1-ae86-4516-aad2-95f478b4c1ba"
+subscription_id =  "a115245a-5fc9-4035-be0e-075bb0a69408" # subscription id
 tenant_id       = "" # tenant id
 project_name    = "gsl"
 environment     = "dev"

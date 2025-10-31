@@ -23,3 +23,27 @@ variable "asp_os_type" { # app service plan os type
   type    = string
   default = "Windows"
 }
+
+variable "stg_name" {
+  default = "cusgslstoragedevst"
+}
+variable "account_tier" { # name for the account tier
+  type    = string
+  default = "Standard"
+}
+
+variable "account_replication_type" { # name for the account replication type
+  type    = string
+  default = "LRS"
+}
+
+variable "account_kind" { # name for the account kind
+  type    = string
+  default = "BlobStorage"
+}
+
+variable "hierarchical_namespace" { # name for the hierarchical namespace
+  default = "true"
+  type    = bool
+
+}
